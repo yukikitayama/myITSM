@@ -1,0 +1,36 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# Setup
+
+```{r}
+library(itsmr)
+```
+
+# Data
+
+```{r}
+df <- read.csv("sunspots.txt", header = F, col.names = "value")
+head(df)
+```
+
+# Time series data
+
+```{r}
+ts <- ts(df)
+```
+
+# Transformation
+
+```{r}
+t_ts <- ts - mean(ts)
+```
+
+# Yule-Walker estimation
+
+```{r}
+yw(x = t_ts, p = 2)
+```
+
